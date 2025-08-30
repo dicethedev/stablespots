@@ -8,7 +8,7 @@ import {
   SITE_NAME_URL,
 } from "@/utils/site";
 import { Toaster } from "sonner";
-
+// import { MiniKitContextProvider } from "@/providers/MiniKitContextProvider";
 
 export const metadata: Metadata = {
   title: SITE_NAME,
@@ -67,6 +67,7 @@ export default function RootLayout({
     <html lang="en">
       <body id={"root"} suppressHydrationWarning={true}>
         <Toaster position="top-center" richColors />
+        {/* <MiniKitContextProvider>{children}</MiniKitContextProvider> */}
         {children}
       </body>
     </html>
