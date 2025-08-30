@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Business } from "./page";
+import { Business } from "../page";
 import { CategoryFilter } from "./CategoryFilter";
 import { Input } from "@/components/ui/input";
 import { Search, X } from "lucide-react";

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Business } from "./page";
+import { Business } from "../page";
 import { ArrowDirectIcon } from "@/assets/svg";
 import WalletAddress from "@/components/walletAddress";
 

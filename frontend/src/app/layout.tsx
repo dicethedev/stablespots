@@ -11,6 +11,7 @@ import { Toaster } from "sonner";
 // import { MiniKitContextProvider } from "@/providers/MiniKitContextProvider";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: SITE_NAME,
   description: SITE_DESCRIPTION,
   keywords: [
@@ -38,25 +39,13 @@ export const metadata: Metadata = {
     ],
     siteName: SITE_NAME_URL,
   },
-  twitter: {
-    card: "summary_large_image",
-    site: SITE_URL,
-    title: SITE_NAME,
-    description: SITE_DESCRIPTION,
-    images: [
-      {
-        url: SITE_IMAGE_CLOUDINARY_URL,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
   icons: {
     icon: "/image/stablespots.svg",
     shortcut: "/image/stablespots.svg",
     apple: "/image/stablespots.svg",
   },
 };
+
 
 export default function RootLayout({
   children,
