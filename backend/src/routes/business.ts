@@ -6,23 +6,6 @@ import { requireAdmin } from "./admin";
 
 const router = Router();
 
-// // GET all businesses
-// router.get("/", async (_req, res) => {
-//   const businesses = await Business.find();
-//   res.json(businesses);
-// });
-
-
-// // Admin approve
-// router.post("/approve/:id", async (req, res) => {
-//   const biz = await PendingBusiness.findById(req.params.id);
-//   if (!biz) return res.status(404).json({ error: "Business not found" });
-
-//   biz.status = "approved";
-//   await biz.save();
-//   res.json(biz);
-// });
-
 // GET approved businesses only (public map)
 router.get("/", async (_req: Request, res: Response) => {
   try {
@@ -190,7 +173,6 @@ router.patch("/:id", requireAdmin, async (req: Request, res: Response) => {
     });
   }
 });
-
 
 
 export default router;

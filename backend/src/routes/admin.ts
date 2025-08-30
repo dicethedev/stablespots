@@ -1,5 +1,15 @@
 import express from "express";
+import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
+
+// Extend Express Request interface to include 'admin'
+declare global {
+  namespace Express {
+    interface Request {
+      admin?: any;
+    }
+  }
+}
 
 const router = express.Router();
 
@@ -7,7 +17,7 @@ const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "";
 const JWT_SECRET = process.env.JWT_SECRET || "";
 
 // POST /api/admin/login
-router.post("/login", (req, res) => {
+router.post("/login", (req: Request, res: Response) => {
   const { password } = req.body;
     console.log("Expected password (from env):", ADMIN_PASSWORD);
   console.log("Received password (from request):", password);
@@ -27,7 +37,7 @@ router.post("/login", (req, res) => {
 });
 
 // Middleware for protecting admin routes
-export function requireAdmin(req: any, res: any, next: any) {
+export function requireAdmin(req: Request, res: Response, next: any) {
   const authHeader = req.headers.authorization;
   if (!authHeader) return res.status(401).json({ error: "Unauthorized" });
 
