@@ -11,28 +11,6 @@ const router = Router();
 //   res.json(businesses);
 // });
 
-// // POST new business
-// router.post("/", async (req, res) => {
-//   const { name, category, lat, lng, walletAddress, website } = req.body;
-//   try {
-//     const newBiz = new Business({ name, category, lat, lng, walletAddress, website });
-//     await newBiz.save();
-//     res.status(201).json(newBiz);
-//   } catch (err) {
-//     res.status(400).json({ error: "Error saving business" });
-//   }
-// });
-
-// // Submit request (business inquiry)
-// router.post("/inquiry", async (req, res) => {
-//   const { name, category, lat, lng, walletAddress, website, acceptsUSDC } = req.body;
-//   if (!acceptsUSDC) {
-//     return res.status(400).json({ error: "Business must accept USDC to be listed." });
-//   }
-//   const newBiz = new PendingBusiness({ name, category, lat, lng, walletAddress, website, acceptsUSDC });
-//   await newBiz.save();
-//   res.status(201).json(newBiz);
-// });
 
 // // Admin approve
 // router.post("/approve/:id", async (req, res) => {
