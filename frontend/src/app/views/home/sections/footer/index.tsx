@@ -1,6 +1,14 @@
 import { TwitterXIcon, WarpcastIcon } from "@/assets/svg";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 const Footer = () => {
+  const router = useRouter();
+
+  const handleAdminLogin = () => {
+    router.push("/login");
+  };
+
   return (
     <footer className="w-full py-6 px-4 md:px-8 mt-20">
       <div className="flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto gap-4">
@@ -11,7 +19,7 @@ const Footer = () => {
 
         {/* Social Icons */}
         <div className="flex items-center gap-4">
-          {/* Warpcast Icon and link to warpcast frame for StableSpots */}
+          {/* Warpcast Icon */}
           <a
             href="https://warpcast.com/your-profile"
             target="_blank"
@@ -21,7 +29,7 @@ const Footer = () => {
             <WarpcastIcon />
           </a>
 
-          {/* Twitter Icon and link to twitter(X) for StableSpots*/}
+          {/* Twitter Icon */}
           <a
             href="https://twitter.com/usdcnearme"
             target="_blank"
@@ -30,6 +38,16 @@ const Footer = () => {
           >
             <TwitterXIcon />
           </a>
+
+          {/* Login Admin Button */}
+          <Button
+            size="sm"
+            variant="link" // if your Button component supports link variant
+            className="ml-2 !bg-transparent !text-[var(--direct-btn-color)] underline px-0 py-0 cursor-pointer"
+            onClick={handleAdminLogin}
+          >
+            StableSpots Admin
+          </Button>
         </div>
       </div>
     </footer>
