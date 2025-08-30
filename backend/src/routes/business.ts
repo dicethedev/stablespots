@@ -1,4 +1,5 @@
-import { Router } from "express";
+import { Router, Request, Response } from "express";
+
 import { Business } from "../models/Business";
 import { PendingBusiness } from "../models/PendingBusiness";
 import { requireAdmin } from "./admin";
@@ -23,7 +24,7 @@ const router = Router();
 // });
 
 // GET approved businesses only (public map)
-router.get("/", async (_req, res) => {
+router.get("/", async (_req: Request, res: Response) => {
   try {
     const businesses = await Business.find({ status: "approved" });
     res.json(businesses);
@@ -38,7 +39,7 @@ router.get("/", async (_req, res) => {
 
 
 // GET businesses with filters, search, recommended, sort
-router.get("/search", async (req, res) => {
+router.get("/search", async (req: Request, res: Response) => {
   try {
     const { search, category, sort, lat, lng } = req.query;
 
@@ -97,7 +98,7 @@ router.get("/search", async (req, res) => {
 });
 
 // GET pending businesses (admin review)
-router.get("/pending", requireAdmin, async (_req, res) => {
+router.get("/pending", requireAdmin, async (_req: Request, res: Response) => {
   try {
     const businesses = await Business.find({ status: "pending" });
     res.json(businesses);
@@ -112,7 +113,7 @@ router.get("/pending", requireAdmin, async (_req, res) => {
 
 
 // POST new business (auto pending)
-router.post("/", async (req, res) => {
+router.post("/", async (req: Request, res: Response) => {
   const {
     name,
     category,
@@ -156,7 +157,7 @@ router.post("/", async (req, res) => {
 });
 
 // PATCH approve/reject (admin only)
-router.patch("/:id", requireAdmin, async (req, res) => {
+router.patch("/:id", requireAdmin, async (req: Request, res: Response) => {
   const { status } = req.body; // "approved" or "rejected"
 
   if (!["approved", "rejected"].includes(status)) {
