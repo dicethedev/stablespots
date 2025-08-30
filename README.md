@@ -149,12 +149,12 @@ POST   /api/admin/login      # Login Admin User
 ---
 
 ---
-## 🤝 Architecture Guide
+#### 🤝 Architecture Guide
 
 Please read our [ARCHITECTURE.md](ARCHITECTURE.md) for details how `StableSpots` is built.
 ---
 
-## 🤝 Contribution Guide
+#### 🤝 Contribution Guide
 
 Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to get started.
 ---
