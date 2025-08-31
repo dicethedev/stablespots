@@ -50,7 +50,7 @@ export async function GET() {
       ogImageUrl: NEXT_PUBLIC_APP_OG_IMAGE,
       // use only while testing
       // @ts-ignore
-      noindex: true,
+      // noindex: true,
     }),
   });
 }
