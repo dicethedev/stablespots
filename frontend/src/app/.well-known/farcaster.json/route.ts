@@ -42,7 +42,7 @@ export async function GET() {
       buttonTitle: 'Explore the map',
       webhookUrl: `${URL}/api/webhook`,
       primaryCategory: NEXT_PUBLIC_APP_PRIMARY_CATEGORY,
-      tags: ["stablespots","business","usdc","stablecoins","map","crypto"],
+      tags: ["business","usdc","stablecoins","map","crypto"],
       heroImageUrl: NEXT_PUBLIC_APP_HERO_IMAGE,
       tagline: "Google Maps for USDC", // ≤30 chars
       ogTitle: NEXT_PUBLIC_APP_OG_TITLE,
