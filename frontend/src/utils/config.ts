@@ -1,1 +1,16 @@
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "";
+export const FARCASTER_HEADER  = process.env.FARCASTER_HEADER ?? "";
+export const FARCASTER_PAYLOAD  = process.env.FARCASTER_PAYLOAD ?? "";
+export const FARCASTER_SIGNATURE  = process.env.FARCASTER_SIGNATURE ?? "";
+export const NEXT_PUBLIC_ONCHAINKIT_PROJECT_NAME = process.env.NEXT_PUBLIC_ONCHAINKIT_PROJECT_NAME ?? "";
+export const NEXT_PUBLIC_APP_SUBTITLE = process.env.NEXT_PUBLIC_APP_SUBTITLE ?? "";
+export const NEXT_PUBLIC_APP_DESCRIPTION = process.env.NEXT_PUBLIC_APP_DESCRIPTION ?? "";
+export const NEXT_PUBLIC_APP_ICON = process.env.NEXT_PUBLIC_APP_ICON ?? "";
+export const NEXT_PUBLIC_APP_SPLASH_IMAGE = process.env.NEXT_PUBLIC_APP_SPLASH_IMAGE ?? "";
+export const NEXT_PUBLIC_SPLASH_BACKGROUND_COLOR = process.env.NEXT_PUBLIC_SPLASH_BACKGROUND_COLOR ?? "";
+export const NEXT_PUBLIC_APP_PRIMARY_CATEGORY = process.env.NEXT_PUBLIC_APP_PRIMARY_CATEGORY ?? "";
+export const NEXT_PUBLIC_APP_HERO_IMAGE = process.env.NEXT_PUBLIC_APP_HERO_IMAGE ?? "";
+export const NEXT_PUBLIC_APP_TAGLINE = process.env.NEXT_PUBLIC_APP_TAGLINE ?? "";
+export const NEXT_PUBLIC_APP_OG_TITLE = process.env.NEXT_PUBLIC_APP_OG_TITLE ?? "";
+export const NEXT_PUBLIC_APP_OG_DESCRIPTION = process.env.NEXT_PUBLIC_APP_OG_DESCRIPTION ?? "";
+export const NEXT_PUBLIC_APP_OG_IMAGE = process.env.NEXT_PUBLIC_APP_OG_IMAGE ?? "";

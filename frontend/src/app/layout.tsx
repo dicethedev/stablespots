@@ -8,7 +8,7 @@ import {
   SITE_NAME_URL,
 } from "@/utils/site";
 import { Toaster } from "sonner";
-// import { MiniKitContextProvider } from "@/providers/MiniKitContextProvider";
+import { MiniKitContextProvider } from "@/providers/MiniKitContextProvider";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -44,6 +44,23 @@ export const metadata: Metadata = {
     shortcut: "/image/stablespots.svg",
     apple: "/image/stablespots.svg",
   },
+   // Add fc:frame metadata for rich embeds
+  other: {
+    "fc:frame": JSON.stringify({
+      version: "next",
+      imageUrl: process.env.NEXT_PUBLIC_APP_HERO_IMAGE,
+      button: {
+        title: `Launch ${process.env.NEXT_PUBLIC_ONCHAINKIT_PROJECT_NAME}`,
+        action: {
+          type: "launch_frame",
+          name: process.env.NEXT_PUBLIC_ONCHAINKIT_PROJECT_NAME,
+          url: process.env.NEXT_PUBLIC_URL,
+          splashImageUrl: process.env.NEXT_PUBLIC_APP_SPLASH_IMAGE,
+          splashBackgroundColor: process.env.NEXT_PUBLIC_SPLASH_BACKGROUND_COLOR,
+        },
+      },
+    }),
+  },
 };
 
 
@@ -56,8 +73,7 @@ export default function RootLayout({
     <html lang="en">
       <body id={"root"} suppressHydrationWarning={true}>
         <Toaster position="top-center" richColors />
-        {/* <MiniKitContextProvider>{children}</MiniKitContextProvider> */}
-        {children}
+        <MiniKitContextProvider>{children}</MiniKitContextProvider>
       </body>
     </html>
   );

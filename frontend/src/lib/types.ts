@@ -7,3 +7,6 @@ export type Category = {
   name: string;
   icon: ReactNode | null;
 };
+
+
+
