@@ -1,4 +1,4 @@
-export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "";
+export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:5000";
 export const FARCASTER_HEADER  = process.env.FARCASTER_HEADER ?? "";
 export const FARCASTER_PAYLOAD  = process.env.FARCASTER_PAYLOAD ?? "";
 export const FARCASTER_SIGNATURE  = process.env.FARCASTER_SIGNATURE ?? "";

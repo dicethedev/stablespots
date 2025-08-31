@@ -11,8 +11,7 @@ const app = express();
 
 app.use(
   cors({
-    // origin: "http://localhost:3000",
-    origin: "https://stablespots.xyz",
+    origin: ["https://stablespots.xyz", "https://www.stablespots.xyz", "http://localhost:3000"],
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
