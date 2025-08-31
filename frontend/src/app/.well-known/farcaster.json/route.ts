@@ -10,7 +10,6 @@ import { BASE_URL,
     NEXT_PUBLIC_APP_PRIMARY_CATEGORY,
     NEXT_PUBLIC_APP_SPLASH_IMAGE,
     NEXT_PUBLIC_ONCHAINKIT_PROJECT_NAME,
-    NEXT_PUBLIC_APP_SUBTITLE,
     NEXT_PUBLIC_APP_HERO_IMAGE
 } from './../../../utils/config';
 
@@ -32,25 +31,25 @@ export async function GET() {
     frame: withValidProperties({
       version: '1',
       name: NEXT_PUBLIC_ONCHAINKIT_PROJECT_NAME,
-      subtitle: NEXT_PUBLIC_APP_SUBTITLE,
+      subtitle: "Find USDC businesses", // ≤30 chars
       description: NEXT_PUBLIC_APP_DESCRIPTION,
       screenshotUrls: [],
       iconUrl: NEXT_PUBLIC_APP_ICON,
       splashImageUrl: NEXT_PUBLIC_APP_SPLASH_IMAGE,
       splashBackgroundColor: "#071134",
       homeUrl: URL,
-      imageUrl: "https://stablespots.xyz/og.png",
+      imageUrl: NEXT_PUBLIC_APP_HERO_IMAGE,
       buttonTitle: 'Explore the map',
       webhookUrl: `${URL}/api/webhook`,
       primaryCategory: NEXT_PUBLIC_APP_PRIMARY_CATEGORY,
-      tags: ["business","usdc","map","googlemap","stablecoins","crypto"],
+      tags: ["stablespots","business","usdc","stablecoins","map","crypto"],
       heroImageUrl: NEXT_PUBLIC_APP_HERO_IMAGE,
-      tagline: "Google Maps for USDC",
+      tagline: "Google Maps for USDC", // ≤30 chars
       ogTitle: NEXT_PUBLIC_APP_OG_TITLE,
       ogDescription: NEXT_PUBLIC_APP_OG_DESCRIPTION,
       ogImageUrl: NEXT_PUBLIC_APP_OG_IMAGE,
       // use only while testing
-      //@ts-ignore
+      // @ts-ignore
       noindex: true,
     }),
   });
