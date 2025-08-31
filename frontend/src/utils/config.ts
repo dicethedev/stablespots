@@ -2,6 +2,7 @@ export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:50
 export const FARCASTER_HEADER  = process.env.FARCASTER_HEADER ?? "";
 export const FARCASTER_PAYLOAD  = process.env.FARCASTER_PAYLOAD ?? "";
 export const FARCASTER_SIGNATURE  = process.env.FARCASTER_SIGNATURE ?? "";
+export const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL ?? "";
 export const NEXT_PUBLIC_ONCHAINKIT_PROJECT_NAME = process.env.NEXT_PUBLIC_ONCHAINKIT_PROJECT_NAME ?? "";
 export const NEXT_PUBLIC_APP_SUBTITLE = process.env.NEXT_PUBLIC_APP_SUBTITLE ?? "";
 export const NEXT_PUBLIC_APP_DESCRIPTION = process.env.NEXT_PUBLIC_APP_DESCRIPTION ?? "";

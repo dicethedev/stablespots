@@ -1,7 +1,8 @@
-import { BASE_URL, 
+import {
     FARCASTER_PAYLOAD, 
     FARCASTER_HEADER, 
     FARCASTER_SIGNATURE,
+    NEXT_PUBLIC_URL,
     NEXT_PUBLIC_APP_DESCRIPTION,
     NEXT_PUBLIC_APP_ICON, 
     NEXT_PUBLIC_APP_OG_DESCRIPTION,
@@ -20,7 +21,7 @@ function withValidProperties(properties: Record<string, undefined | string | str
 }
 
 export async function GET() {
-  const URL = BASE_URL as string;
+  const URL = NEXT_PUBLIC_URL as string;
 
   return Response.json({
     accountAssociation: {
