@@ -225,8 +225,8 @@ export default function Map() {
         <Image
           src="/image/stablespots_logo.svg"
           alt="StableSpots Logo"
-          width={120}
-          height={35}
+          width={100}
+          height={100}
           className="object-contain"
         />
       </div>

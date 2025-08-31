@@ -10,6 +10,22 @@ import {
 import { Toaster } from "sonner";
 import { MiniKitContextProvider } from "@/providers/MiniKitContextProvider";
 
+  // Build Mini App embed per latest docs
+  const miniappEmbed = {
+    version: '1',
+    imageUrl: process.env.NEXT_PUBLIC_APP_HERO_IMAGE,
+    button: {
+      title: `Launch ${process.env.NEXT_PUBLIC_ONCHAINKIT_PROJECT_NAME}`,
+      action: {
+        type: 'launch_miniapp',
+        name: process.env.NEXT_PUBLIC_ONCHAINKIT_PROJECT_NAME,
+        url: URL,
+        splashImageUrl: process.env.NEXT_PUBLIC_APP_SPLASH_IMAGE,
+        splashBackgroundColor: process.env.NEXT_PUBLIC_SPLASH_BACKGROUND_COLOR, 
+      }
+    }
+  };
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: SITE_NAME,
@@ -46,6 +62,9 @@ export const metadata: Metadata = {
   },
    // Add fc:frame metadata for rich embeds
   other: {
+     // New embed tag
+    'fc:miniapp': JSON.stringify(miniappEmbed),
+     // Backward compatibility tag
     "fc:frame": JSON.stringify({
       version: "next",
       imageUrl: process.env.NEXT_PUBLIC_APP_HERO_IMAGE,
