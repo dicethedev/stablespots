@@ -40,15 +40,15 @@ StableSpots is designed as a **full-stack web application** with the following c
 
 #### Business Routes
 
-- `GET /api/businesses` → Fetch all approved businesses (shown on public map).
-- `GET /api/businesses/search?search=&category=&sort=&lat=&lng=` → Search/filter businesses, search → text search (name, description), category → filter by category, sort=recent → newest first, sort=nearby&lat=&lng= → sort by distance (client-side)  
-- `GET /api/businesses/pending` (admin only) → Fetch pending businesses for review.
-- `POST /api/businesses` → Submit new business (defaults to pending status). 
-- `PATCH /api/businesses/:id` (admin only) → Approve or reject a business (status = "approved" | "rejected").
+- `GET /businesses` → Fetch all approved businesses (shown on public map).
+- `GET /businesses/search?search=&category=&sort=&lat=&lng=` → Search/filter businesses, search → text search (name, description), category → filter by category, sort=recent → newest first, sort=nearby&lat=&lng= → sort by distance (client-side)  
+- `GET /businesses/pending` (admin only) → Fetch pending businesses for review.
+- `POST /businesses` → Submit new business (defaults to pending status). 
+- `PATCH /businesses/:id` (admin only) → Approve or reject a business (status = "approved" | "rejected").
 
 #### Admin Routes
 
-- `POST /api/admin/login` → Admin login with password. Returns JWT token (valid 6h).
+- `POST /admin/login` → Admin login with password. Returns JWT token (valid 6h).
 - `Middleware: requireAdmin` → Protects admin-only routes (checks for valid admin JWT).
 ---
 

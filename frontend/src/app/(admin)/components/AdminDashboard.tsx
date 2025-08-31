@@ -27,7 +27,7 @@ export default function AdminDashboard() {
     const fetchPending = async () => {
       try {
         const token = getCookie("admin_token");
-        const res = await axios.get(`${BASE_URL}/api/businesses/pending`, {
+        const res = await axios.get(`${BASE_URL}/businesses/pending`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setPending(res.data);
@@ -44,7 +44,7 @@ export default function AdminDashboard() {
     try {
       const token = getCookie("admin_token");
       await axios.patch(
-        `${BASE_URL}/api/businesses/${id}`,
+        `${BASE_URL}/businesses/${id}`,
         { status },
         { headers: { Authorization: `Bearer ${token}` } }
       );

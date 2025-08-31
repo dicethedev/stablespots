@@ -125,16 +125,16 @@ Frontend runs on: **http://localhost:3000**
 
 ### Business Routes
 ```http
-POST   /api/businesses      # Add new business
-GET    /api/businesses      # Get all businesses
-GET    /api/businesses/:id  # Get single business
-PUT    /api/businesses/:id  # Update business
-GET /api/businesses/search  # Get businesses with filters, search, recommended, sort
+POST   /businesses      # Add new business
+GET    /businesses      # Get all businesses
+GET    /businesses/:id  # Get single business
+PUT    /businesses/:id  # Update business
+GET /businesses/search  # Get businesses with filters, search, recommended, sort
 ```
 
 ### User Routes
 ```http
-POST   /api/admin/login      # Login Admin User
+POST  /admin/login      # Login Admin User
 ```
 
 ---

@@ -55,7 +55,7 @@ export default function AddBusiness() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post(`${BASE_URL}/api/businesses`, {
+      await axios.post(`${BASE_URL}/businesses`, {
         ...form,
         lat: parseFloat(form.lat),
         lng: parseFloat(form.lng),

@@ -26,7 +26,7 @@ export default function LoginPage() {
     setError("");
 
     try {
-      const res = await axios.post(`${BASE_URL}/api/admin/login`, {
+      const res = await axios.post(`${BASE_URL}/admin/login`, {
         password,
       });
       // Save JWT token in cookie

@@ -48,7 +48,7 @@
 //         lng: mapPosition[1],
 //       };
 
-//       const res = await axios.get(`${BASE_URL}/api/businesses/search`, {
+//       const res = await axios.get(`${BASE_URL}/businesses/search`, {
 //         params,
 //       });
 //       setBusinesses(res.data);
@@ -162,7 +162,7 @@ export default function Map() {
         lng: mapPosition[1],
       };
 
-      const res = await axios.get(`${BASE_URL}/api/businesses/search`, { params });
+      const res = await axios.get(`${BASE_URL}/businesses/search`, { params });
       setBusinesses(res.data);
     } catch (err) {
       console.error("Error fetching businesses:", err);

@@ -20,8 +20,8 @@ app.use(
 app.use(express.json());
 
 // Routes
-app.use("/api/businesses", businessRoutes);
-app.use("/api/admin", adminRoutes);
+app.use("/businesses", businessRoutes);
+app.use("/admin", adminRoutes);
 
 const PORT = process.env.PORT || 5000;
 
