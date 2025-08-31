@@ -37,7 +37,6 @@ export default function AddBusiness() {
   });
   const [submitted, setSubmitted] = useState<boolean>(false);
 
-  // Get user's location automatically
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -48,9 +47,7 @@ export default function AddBusiness() {
             lng: pos.coords.longitude.toString(),
           }));
         },
-        (err) => {
-          console.error("Error fetching location:", err);
-        }
+        (err) => console.error("Error fetching location:", err)
       );
     }
   }, []);
@@ -63,38 +60,33 @@ export default function AddBusiness() {
         lat: parseFloat(form.lat),
         lng: parseFloat(form.lng),
       });
-      setSubmitted(true); // show confirmation
-    } catch (error) {
+      setSubmitted(true);
+    } catch (error: any) {
       console.error("Error adding business:", error);
       showError("Failed to add business. Try again.", error?.toString());
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#071134] to-[#0a1f4d] px-4 py-12">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#071134] to-[#0a1f4d] px-4 py-12 sm:px-6 md:px-8 lg:px-12">
       {submitted && (
         <SubmissionModal submitted={submitted} setSubmitted={setSubmitted} />
       )}
-      <div className="w-full max-w-2xl bg-white rounded-3xl shadow-xl p-10 md:p-12">
-        {/* Title */}
-        <h1 className="text-3xl md:text-4xl font-extrabold text-[#071134] mb-8 text-center">
+      <div className="w-full max-w-3xl bg-white rounded-3xl shadow-xl p-6 sm:p-8 md:p-10 lg:p-12">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#071134] mb-8 text-center">
           🚀 Add Your Business
         </h1>
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Name */}
           <div className="flex flex-col">
-            <label
-              htmlFor="name"
-              className="text-sm font-semibold text-[#071134] mb-2"
-            >
+            <label htmlFor="name" className="text-sm font-semibold text-[#071134] mb-2">
               Business Name
             </label>
             <input
               id="name"
               placeholder="e.g. Crypto Café"
-              className="border border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#071134] focus:border-transparent transition"
+              className="border border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#071134] focus:border-transparent transition w-full"
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
             />
@@ -102,49 +94,40 @@ export default function AddBusiness() {
 
           {/* Category */}
           <div className="flex flex-col">
-            <label
-              htmlFor="category"
-              className="text-sm font-semibold text-[#071134] mb-2"
-            >
+            <label htmlFor="category" className="text-sm font-semibold text-[#071134] mb-2">
               Category
             </label>
             <input
               id="category"
               placeholder="e.g. Restaurant, Retail, Service"
-              className="border border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#071134] transition"
+              className="border border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#071134] transition w-full"
               value={form.category}
               onChange={(e) => setForm({ ...form, category: e.target.value })}
             />
           </div>
 
-          {/* Lat & Lng side by side */}
+          {/* Lat & Lng side by side on md+ */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="flex flex-col">
-              <label
-                htmlFor="lat"
-                className="text-sm font-semibold text-[#071134] mb-2"
-              >
+              <label htmlFor="lat" className="text-sm font-semibold text-[#071134] mb-2">
                 Latitude
               </label>
               <input
                 id="lat"
                 placeholder="Enter latitude"
-                className="border border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#071134] transition"
+                className="border border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#071134] transition w-full"
                 value={form.lat}
                 onChange={(e) => setForm({ ...form, lat: e.target.value })}
               />
             </div>
             <div className="flex flex-col">
-              <label
-                htmlFor="lng"
-                className="text-sm font-semibold text-[#071134] mb-2"
-              >
+              <label htmlFor="lng" className="text-sm font-semibold text-[#071134] mb-2">
                 Longitude
               </label>
               <input
                 id="lng"
                 placeholder="Enter longitude"
-                className="border border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#071134] transition"
+                className="border border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#071134] transition w-full"
                 value={form.lng}
                 onChange={(e) => setForm({ ...form, lng: e.target.value })}
               />
@@ -153,16 +136,13 @@ export default function AddBusiness() {
 
           {/* Wallet */}
           <div className="flex flex-col">
-            <label
-              htmlFor="wallet"
-              className="text-sm font-semibold text-[#071134] mb-2"
-            >
+            <label htmlFor="walletAddress" className="text-sm font-semibold text-[#071134] mb-2">
               Wallet Address
             </label>
             <input
               id="walletAddress"
               placeholder="0x123...abc"
-              className="border border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#071134] transition"
+              className="border border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#071134] transition w-full"
               value={form.walletAddress}
               onChange={(e) => setForm({ ...form, walletAddress: e.target.value })}
             />
@@ -177,64 +157,48 @@ export default function AddBusiness() {
                 setForm({ ...form, acceptsUSDC: Boolean(checked) })
               }
             />
-            <Label
-              htmlFor="acceptsUSDC"
-              className="text-sm font-semibold text-[#071134]"
-            >
+            <Label htmlFor="acceptsUSDC" className="text-sm font-semibold text-[#071134]">
               Accepts USDC?
             </Label>
           </div>
 
           {/* Description */}
           <div className="flex flex-col">
-            <label
-              htmlFor="description"
-              className="text-sm font-semibold text-[#071134] mb-2"
-            >
+            <label htmlFor="description" className="text-sm font-semibold text-[#071134] mb-2">
               Description / Notes
             </label>
             <textarea
               id="description"
               placeholder="Short description about your business"
-              className="border border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#071134] transition"
+              className="border border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#071134] transition w-full resize-none"
               value={form.description}
-              onChange={(e) =>
-                setForm({ ...form, description: e.target.value })
-              }
+              onChange={(e) => setForm({ ...form, description: e.target.value })}
             />
           </div>
 
           {/* Contact Email */}
           <div className="flex flex-col">
-            <label
-              htmlFor="contactEmail"
-              className="text-sm font-semibold text-[#071134] mb-2"
-            >
+            <label htmlFor="contactEmail" className="text-sm font-semibold text-[#071134] mb-2">
               Contact Email (optional)
             </label>
             <input
               id="contactEmail"
               placeholder="you@example.com"
-              className="border border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#071134] transition"
+              className="border border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#071134] transition w-full"
               value={form.contactEmail}
-              onChange={(e) =>
-                setForm({ ...form, contactEmail: e.target.value })
-              }
+              onChange={(e) => setForm({ ...form, contactEmail: e.target.value })}
             />
           </div>
 
           {/* Website */}
           <div className="flex flex-col">
-            <label
-              htmlFor="website"
-              className="text-sm font-semibold text-[#071134] mb-2"
-            >
+            <label htmlFor="website" className="text-sm font-semibold text-[#071134] mb-2">
               Website (optional)
             </label>
             <input
               id="website"
               placeholder="https://example.com"
-              className="border border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#071134] transition"
+              className="border border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#071134] transition w-full"
               value={form.website}
               onChange={(e) => setForm({ ...form, website: e.target.value })}
             />

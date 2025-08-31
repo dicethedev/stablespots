@@ -106,6 +106,26 @@ const HeroSection = () => {
           Add a business
         </Button>
       </div>
+
+      <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-2 text-sm sm:text-base text-gray-600">
+        <span className="underline">Available on Warpcast and BaseApp</span>
+        <div className="flex items-center gap-4 mt-4 sm:mt-0">
+          <Image
+            src="/icons/warpcast_logo.svg"
+            alt="Warpcast"
+            width={50}
+            height={50}
+            className="w-10 h-10 sm:w-12 sm:h-12"
+          />
+          <Image
+            src="/icons/baseapp_logo.svg"
+            alt="BaseApp"
+            width={50}
+            height={50}
+            className="w-10 h-10 sm:w-12 sm:h-12"
+          />
+        </div>
+      </div>
     </div>
   );
 };
