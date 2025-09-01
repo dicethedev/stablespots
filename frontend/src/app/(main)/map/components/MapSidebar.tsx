@@ -149,7 +149,6 @@
 //   );
 // }
 
-
 "use client";
 
 import { useState, useMemo } from "react";
@@ -174,6 +173,7 @@ interface MapSidebarProps {
   loading?: boolean;
   isOpen?: boolean;
   onClose?: () => void;
+  setIsSidebarOpen?: any;
 }
 
 export default function MapSidebar({
@@ -188,6 +188,7 @@ export default function MapSidebar({
   loading,
   isOpen = true,
   onClose,
+  setIsSidebarOpen,
 }: MapSidebarProps) {
   const [localSearch, setLocalSearch] = useState(searchQuery);
 
@@ -305,7 +306,15 @@ export default function MapSidebar({
                 onClick={() => setSelectedBusiness(biz)}
                 className="cursor-pointer hover:scale-105 transition-transform"
               >
-                <BusinessCard biz={biz} />
+                <BusinessCard biz={biz} 
+                onSelect={(b: any) => {
+    setSelectedBusiness(b);
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      // mobile
+      setIsSidebarOpen?.(false);
+    }
+  }}
+                />
               </div>
             ))
           : (

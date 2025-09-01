@@ -108,7 +108,15 @@ const HeroSection = () => {
       </div>
 
       <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-2 text-sm sm:text-base text-gray-600">
-        <span className="underline">Available on Warpcast and BaseApp</span>
+        <a
+          href="https://farcaster.xyz/miniapps/uaGfQ1yj4NLk/stablespots"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline"
+        >
+          Available on Farcaster and BaseApp
+        </a>
+
         <div className="flex items-center gap-4 mt-4 sm:mt-0">
           <Image
             src="/icons/warpcast_logo.svg"

@@ -114,7 +114,6 @@
 //   );
 // }
 
-
 "use client";
 
 import { useState, useEffect, useCallback, useMemo } from "react";
@@ -178,48 +177,9 @@ export default function Map() {
   return (
     <div className="relative w-full h-screen flex overflow-hidden">
 
-      {/* Mobile & Tablet Sidebar Toggle */}
-      <button
-        className="fixed top-4 left-4 z-[10000] p-3 bg-white rounded-lg shadow-md md:hidden"
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-      >
-        {isSidebarOpen ? "Close" : "Menu"}
-      </button>
-
-      {/* Sidebar */}
+      {/* Logo top-right (always visible) */}
       <div
-        className={`
-          fixed top-0 left-0 z-50 h-full bg-[var(--box-map-bg-color)] backdrop-blur-[27.2px] px-4 py-6 overflow-y-auto
-          transition-transform duration-300 ease-in-out
-          ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} 
-          md:translate-x-0 md:w-[280px] lg:w-[360px] rounded-r-[20px] shadow-lg
-        `}
-      >
-        <MapSidebar
-          businesses={businesses}
-          selectedBusiness={selectedBusiness}
-          setSelectedBusiness={setSelectedBusiness}
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          category={category}
-          setCategory={setCategory}
-          sort={sort}
-          setSort={setSort}
-          loading={loading}
-        />
-      </div>
-
-      {/* Overlay for mobile when sidebar open */}
-      {isSidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black/30 z-40 md:hidden"
-          onClick={() => setIsSidebarOpen(false)}
-        ></div>
-      )}
-
-      {/* Logo top-right */}
-      <div
-        className="fixed top-4 right-4 z-[9999] bg-[#FFFFFF80] rounded-[20px] backdrop-blur-[5px] p-[12px] cursor-pointer"
+        className="fixed top-4 right-4 z-[10000] bg-[#FFFFFF80] rounded-[20px] backdrop-blur-[5px] p-[12px] cursor-pointer"
         onClick={() => router.push("/")}
       >
         <Image
@@ -231,28 +191,100 @@ export default function Map() {
         />
       </div>
 
-      {/* Map container */}
-      <div
-        className={`
-          flex-1 h-full flex items-center justify-center transition-all duration-300
-          ${isSidebarOpen ? "blur-sm md:blur-0" : ""}
-          md:ml-[280px] lg:ml-[360px]
-        `}
-      >
-        {loading ? (
-          <div className="flex flex-col items-center justify-center h-full w-full">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
-            <p className="mt-4 text-gray-700">Loading map...</p>
-          </div>
-        ) : (
-          <MapLeaflet
+      {/* --- MOBILE VIEW --- */}
+      <div className="block md:hidden w-full h-full">
+        {/* Toggle Button */}
+        <button
+          className="fixed top-4 left-4 z-[10000] p-3 bg-white rounded-lg shadow-md"
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        >
+          {isSidebarOpen ? "Close" : "Menu"}
+        </button>
+
+        {/* Map (always visible in background) */}
+        <div className="w-full h-full">
+          {loading ? (
+            <div className="flex flex-col items-center justify-center h-full w-full">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+              <p className="mt-4 text-gray-700">Loading map...</p>
+            </div>
+          ) : (
+            <MapLeaflet
+              businesses={businesses}
+              selectedBusiness={selectedBusiness}
+              mapPosition={mapPosition}
+            />
+          )}
+        </div>
+
+        {/* Sidebar (slides in on top of map) */}
+        <div
+          className={`
+            fixed top-0 left-0 z-[11000] h-full w-4/5 max-w-[360px]
+            bg-[var(--box-map-bg-color)] backdrop-blur-[27.2px] px-4 py-6 overflow-y-auto shadow-lg
+            transition-transform duration-300 ease-in-out
+            ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
+          `}
+        >
+          <MapSidebar
             businesses={businesses}
             selectedBusiness={selectedBusiness}
-            mapPosition={mapPosition}
+            setSelectedBusiness={setSelectedBusiness}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            category={category}
+            setCategory={setCategory}
+            sort={sort}
+            setSort={setSort}
+            loading={loading}
+            setIsSidebarOpen={setIsSidebarOpen}
+          />
+        </div>
+
+        {/* Overlay when sidebar is open */}
+        {isSidebarOpen && (
+          <div
+            className="fixed inset-0 bg-black/30 z-[10000]"
+            onClick={() => setIsSidebarOpen(false)}
           />
         )}
+      </div>
+
+      {/* --- DESKTOP VIEW --- */}
+      <div className="hidden md:flex w-full h-full">
+        {/* Sidebar */}
+        <div className="w-[280px] lg:w-[360px] h-full bg-[var(--box-map-bg-color)] backdrop-blur-[27.2px] px-4 py-6 overflow-y-auto shadow-lg">
+          <MapSidebar
+            businesses={businesses}
+            selectedBusiness={selectedBusiness}
+            setSelectedBusiness={setSelectedBusiness}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            category={category}
+            setCategory={setCategory}
+            sort={sort}
+            setSort={setSort}
+            loading={loading}
+            setIsSidebarOpen={setIsSidebarOpen}
+          />
+        </div>
+
+        {/* Map */}
+        <div className="flex-1 h-full flex items-center justify-center">
+          {loading ? (
+            <div className="flex flex-col items-center justify-center h-full w-full">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+              <p className="mt-4 text-gray-700">Loading map...</p>
+            </div>
+          ) : (
+            <MapLeaflet
+              businesses={businesses}
+              selectedBusiness={selectedBusiness}
+              mapPosition={mapPosition}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
 }
-

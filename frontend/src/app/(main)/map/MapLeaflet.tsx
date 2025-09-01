@@ -28,13 +28,38 @@ const createCustomIcon = () =>
     popupAnchor: [0, -45],
   });
 
-function FlyToMarker({ position }: { position: [number, number] }) {
+// function FlyToMarker({ position }: { position: [number, number] }) {
+//   const map = useMap();
+//   useEffect(() => {
+//     if (position) map.flyTo(position, 16, { duration: 1.5 });
+//   }, [position, map]);
+//   return null;
+// }
+
+function FlyToMarker({ position }: { position: [number, number] | null }) {
   const map = useMap();
+
   useEffect(() => {
-    if (position) map.flyTo(position, 16, { duration: 1.5 });
+    if (map && position) {
+      const lat = Number(position[0]);
+      const lng = Number(position[1]);
+
+      if (isNaN(lat) || isNaN(lng)) {
+        console.error("Invalid coords received:", position);
+        return;
+      }
+
+      try {
+        map.flyTo([lat, lng], 16, { duration: 1.5 });
+      } catch (err) {
+        console.error("flyTo failed with:", lat, lng, err);
+      }
+    }
   }, [position, map]);
+
   return null;
 }
+
 
 interface MapProps {
   businesses: Business[];
@@ -94,6 +119,7 @@ export default function MapLeaflet({
                       }
                     }}
                     size="sm"
+                    className="!bg-[var(--direct-btn-color)] text-white border-0 rounded-full px-3 py-1 text-sm flex items-center mt-3 md:mt-0"
                   >
                     <ArrowDirectIcon />
                     <span>Direct Me</span>

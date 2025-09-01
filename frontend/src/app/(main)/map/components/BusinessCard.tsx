@@ -89,11 +89,15 @@ import WalletAddress from "@/components/walletAddress";
 
 type BusinessCardProps = {
   biz: Business;
+  onSelect?: (biz: Business) => void;
 };
 
-export const BusinessCard = ({ biz }: BusinessCardProps) => {
+export const BusinessCard = ({ biz, onSelect }: BusinessCardProps) => {
   return (
-    <div className="bg-white p-4 rounded-[20px] shadow-[0px_1px_1px_0px_#0000000D] border w-full md:max-w-[250px] lg:max-w-[320px]">
+    <div
+      onClick={() => onSelect?.(biz)}
+      className="bg-white p-4 rounded-[20px] shadow-[0px_1px_1px_0px_#0000000D] border w-full md:max-w-[250px] lg:max-w-[320px]"
+    >
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between">
         <div className="flex-1">
           <h2 className="font-medium text-base text-[var(--general-text-color)] mb-1">
@@ -103,9 +107,13 @@ export const BusinessCard = ({ biz }: BusinessCardProps) => {
         </div>
 
         <Button
-          onClick={() => {}}
+        onClick={(e) => {
+            e.stopPropagation(); // prevent triggering card click
+            onSelect?.(biz);
+          }}
           size="sm"
           className="!bg-[var(--direct-btn-color)] text-white border-0 rounded-full px-3 py-1 text-sm flex items-center mt-3 md:mt-0"
+        
         >
           <ArrowDirectIcon />
           Direct Me
